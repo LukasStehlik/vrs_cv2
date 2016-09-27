@@ -170,22 +170,22 @@ int main(void)
  80001f2:	f443 6340 	orr.w	r3, r3, #3072	; 0xc00
  80001f6:	6093      	str	r3, [r2, #8]
 
-  GPIOA->ODR |= 0b1<<5; //Zapnutie LED
+  GPIOA->BSRRL |= 0b1<<5; //Zapnutie LED
  80001f8:	4a08      	ldr	r2, [pc, #32]	; (800021c <main+0x64>)
  80001fa:	4b08      	ldr	r3, [pc, #32]	; (800021c <main+0x64>)
- 80001fc:	8a9b      	ldrh	r3, [r3, #20]
+ 80001fc:	8b1b      	ldrh	r3, [r3, #24]
  80001fe:	b29b      	uxth	r3, r3
  8000200:	f043 0320 	orr.w	r3, r3, #32
  8000204:	b29b      	uxth	r3, r3
- 8000206:	8293      	strh	r3, [r2, #20]
-  GPIOA->ODR &= ~(0b1<<5); // Vypnutie LED
+ 8000206:	8313      	strh	r3, [r2, #24]
+  GPIOA->BSRRH |= 0b1<<5; // Vypnutie LED
  8000208:	4a04      	ldr	r2, [pc, #16]	; (800021c <main+0x64>)
  800020a:	4b04      	ldr	r3, [pc, #16]	; (800021c <main+0x64>)
- 800020c:	8a9b      	ldrh	r3, [r3, #20]
+ 800020c:	8b5b      	ldrh	r3, [r3, #26]
  800020e:	b29b      	uxth	r3, r3
- 8000210:	f023 0320 	bic.w	r3, r3, #32
+ 8000210:	f043 0320 	orr.w	r3, r3, #32
  8000214:	b29b      	uxth	r3, r3
- 8000216:	8293      	strh	r3, [r2, #20]
+ 8000216:	8353      	strh	r3, [r2, #26]
 
   while (1)
   {
