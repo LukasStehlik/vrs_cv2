@@ -51,7 +51,7 @@ void delay(uint32_t t)
 */
 int main(void)
 {
-  //char button;
+  char button;
 
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC,ENABLE);
@@ -72,21 +72,21 @@ int main(void)
 
   while (1)
   {
-	  GPIOA->ODR |= 0b1<<5;
+	  /*GPIOA->ODR |= 0b1<<5;
 	  delay(1000000);
 	  GPIOA->ODR &= ~(0b1<<5);
-	  delay(1000000);
+	  delay(1000000);*/
 
-	  /*if((GPIOC->IDR)&(0b1<<13))
+	  if((GPIOC->IDR)&(0b1<<13))
 	  {
-		  button=1;
+		  //button=1;
 		  GPIOA->ODR |= 0b1<<5;
 	  }
 	  else
 	  {
-		  button=0;
+		  //button=0;
 		  GPIOA->ODR &= ~(0b1<<5);
-	  }*/
+	  }
   }
   return 0;
 }
