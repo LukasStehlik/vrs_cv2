@@ -56,7 +56,8 @@ int main(void)
   GPIOA->PUPDR |= (0b01)<<(5*2);
   GPIOA->OSPEEDR |= (0b11)<<(5*2);
 
-  //GPIOA->ODR |= 0b1<<5;
+  GPIOA->ODR |= 0b1<<5; //Zapnutie LED
+  GPIOA->ODR &= ~(0b1<<5); // Vypnutie LED
 
   while (1)
   {
