@@ -48,21 +48,37 @@ SOFTWARE.
 */
 int main(void)
 {
+  char button;
 
   RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOA,ENABLE);
+  RCC_AHBPeriphClockCmd(RCC_AHBPeriph_GPIOC,ENABLE);
 
+
+  //Nastavenie výstupu pre LED
   GPIOA->MODER |= (0b01)<<(5*2);
   GPIOA->OTYPER &= ~((0b1)<<5);
   GPIOA->PUPDR |= (0b01)<<(5*2);
   GPIOA->OSPEEDR |= (0b11)<<(5*2);
 
-  GPIOA->ODR &= ~(0b1<<5); //Vypnutie LED
-  GPIOA->ODR ^= 0b1<<5; //Zmena stavu LED (zapnuté)
-  GPIOA->ODR ^= 0b1<<5; //Zmena stavu LED (vypnuté)
+  //Nastavenie vstupu pre Button
+  GPIOC->MODER &= ~((0b11)<<(13*2));
+  GPIOC->OTYPER &= ~((0b1)<<13);
+  GPIOC->PUPDR &= ~((0b11)<<(13*2));
+
+
 
   while (1)
   {
-
+	  /*if((GPIOC->IDR)&(0b1<<13))
+	  {
+		  button=1;
+		  GPIOA->ODR |= 0b1<<5;
+	  }
+	  else
+	  {
+		  button=0;
+		  GPIOA->ODR &= ~(0b1<<5);
+	  }*/
   }
   return 0;
 }
